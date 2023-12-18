@@ -20,8 +20,11 @@ shinyUI(
                           
                       h4(tags$p("El tablero de ÁREAS PROTEGIDAS presenta información de visitas en parques nacionales y provinciales según condición de residencia en Argentina. Para conocer detalles por Área Protegida, ingresá a la pestaña ", tags$b("TABLERO"), "; para más información sobre las fuentes de datos ingresa a la pestaña ",tags$b("METODOLOGIA."))),
                       
-                      h5(tags$p("Evolución mensual de las Visitas en Parques Nacionales según condición de residencia.")),
                       
+                      fluidRow(
+                        column(width = 6, h5(tags$p("Evolución mensual de las Visitas en Parques Nacionales según condición de residencia."))),
+                        column(width = 6,  h5(tags$p("Áreas Protegidas Nacionales según registro de visitas. Año 2022")))    
+                               ),
                       
                       fluidRow(
                         column(width = 6,  plotlyOutput("graficoPN")), 
@@ -29,7 +32,7 @@ shinyUI(
                       ),
                       
                       fluidRow(width = 12,
-                               tags$p(style="font-size: 14px; text-align: center;", tags$b('Fuente de datos:'),(' La información fue elaborada por la Dirección Nacional de Mercados y Estadística (DNMyE), en base a datos aportados por la Dirección de Mercadeo de la Administración de Parques Nacionales (APN)'))
+                               tags$p(style="font-size: 14px; text-align: center;", tags$b('Fuentes de datos:'),(' La información fue elaborada por la Dirección Nacional de Mercados y Estadística (DNMyE), en base a datos aportados por la Dirección de Mercadeo de la Administración de Parques Nacionales (APN). El mapa fue elaborado en base a la capa de información geoespacial del Instituto Geográfico Nacional.'))
                                
                       )
                       
@@ -161,8 +164,10 @@ shinyUI(
                             tags$b("3. Región Cuyo:"), "Sierra de las Quijadas, El Leoncito, San Guillermo.",br(),
                             tags$b("4. Región Litoral:"), "Iguazú, El Palmar, Predelta, Río Pilcomayo, Chaco, Mburucuyá, Iberá, El Impenetrable, Colonia Benítez, Formosa, Campo San Juan.", br(),
                             tags$b("5. Región Norte:"), "Talampaya, Los Cardones, Calilegua, Aconquija, El Rey, Baritú,Copo, Laguna de los Pozuelos, El Nogalar de los Toldos, Pizarro.", br(),
-                            tags$b("6. Región Patagonia:"), "Los Glaciares, Nahuel Huapi, Tierra del Fuego, Los Alerces,Lago Puelo, Lanín, Laguna Blanca, Lihué Calel, Monte León, Perito Moreno, Bosques Petrificados, Los Arrayanes, Isla Pingüino, Patagonia."
-                          ),
+                            tags$b("6. Región Patagonia:"), "Los Glaciares, Nahuel Huapi, Tierra del Fuego, Los Alerces,Lago Puelo, Lanín, Laguna Blanca, Lihué Calel, Monte León, Perito Moreno, Bosques Petrificados, Los Arrayanes, Isla Pingüino, Patagonia.",br(),
+                            tags$li(tags$b("Notas:"),"A partir del 2021, se pueden descargar las notas que se presentan en los informes mensuales de visitas en áreas protegidas en un archivo .xlsx en la solapa", tags$b("Tablero.")),
+                            
+                            ),
                           
                           br(),br(),
                           p(style = "text-align: justify;", tags$b(style = "font-size: 15px;","Fuentes de información:")),

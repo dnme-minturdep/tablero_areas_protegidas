@@ -28,7 +28,7 @@ mapa <- left_join(mapa, datos_mapa, by = c("parque_nacional" = "area_protegida")
          total = ifelse(is.na(total), "Sin registro", as.character(format(total, big.mark = "."))))
 
 
-notas <- readxl::read_excel("/srv/DataDNMYE/areas_protegidas/areas_protegidas_nacionales/notas.xlsx") %>% 
+notas <- read_file_srv("/srv/DataDNMYE/areas_protegidas/areas_protegidas_nacionales/notas.xlsx") %>% 
   mutate(parque = str_to_title(parque),
          indice_tiempo = ym(indice_tiempo)) %>% 
   drop_na(notas)
