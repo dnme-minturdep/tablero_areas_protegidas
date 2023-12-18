@@ -50,7 +50,8 @@ shinyUI(
                                                  label = "Año:",
                                                  choices = sort(unique(areas_protegidas_total$anio)),
                                                  selected = sort(unique(areas_protegidas_total$anio)),
-                                                 options = opciones_picker,
+                                                 options = c(opciones_picker,
+                                                             `selected-text-format` = paste0("count > ",  n_distinct(areas_protegidas_total$anio)-1)),
                                                  width = "100%")),
                             
                             
