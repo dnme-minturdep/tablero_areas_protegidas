@@ -5,35 +5,54 @@ shinyServer(function(input, output, session) {
   
 #se arma el gráfico
   
-  output$graficoPN <- renderPlot({
-    datos_grafico <- areas_protegidas2 %>% 
+  output$graficoPN <- renderPlotly({
+    
+    datos_grafico <- areas_protegidas_total %>% 
+      filter(categoria == "Nacional") %>% 
       pivot_longer(cols = c(residentes, no_residentes),
                    names_to = "residencia", values_to = "visitantes") %>% 
+      mutate(residencia = ifelse(residencia == "no_residentes", "No residentes", "Residentes")) %>% 
       group_by(indice_tiempo, residencia) %>% 
       summarise(visitantes = round(sum(visitantes, na.rm = TRUE)))
     
-    ggplot(datos_grafico, aes(indice_tiempo, visitantes, group = residencia,
-                              color= residencia))+
+    grafico <- ggplot(datos_grafico, aes(indice_tiempo, visitantes, group = residencia,
+                              color= residencia, text = paste0("Fecha: ", format(indice_tiempo,"%b-%y"),"<br>",
+                                                               format(visitantes, big.mark = "."), " ", residencia)))+
       geom_line()+
-      scale_color_manual(values = c("residentes" = dnmye_colores("rosa"), 
-                                   "no_residentes" = dnmye_colores("azul verde"))) +
-      scale_x_date(date_breaks = "1 year",
-                   date_labels = "%b%y",
+      scale_color_manual(values = c("Residentes" = dnmye_colores("rosa"), 
+                                   "No residentes" = dnmye_colores("azul verde"))) +
+      scale_x_date(date_breaks = "2 years",
+                   date_labels = "%b-%y",
                    expand = c(.03,1)) +
       scale_y_continuous(limits = c(0,max(datos_grafico$visitantes)),
                          labels = function(x){format(x, scientific = F)} ) +
-      theme_minimal() 
+      theme_minimal() +
+      xlab("") + ylab("")
+    
+    ggplotly(grafico, tooltip = "text")  %>%
+      layout(legend = list(orientation = "h", x = 0.3, y = -0.1))
     
   })
   
   #para armar el mapa
   
+  etiquetas <- paste0(mapa$parque_nacional, "<br>", 
+                      mapa$categoria, "<br>",
+                      "Visitantes: ", mapa$total) %>%
+    lapply(htmltools::HTML)
+  
   output$mapaPN <- renderLeaflet({
     mapa %>% 
-      mutate(color = ifelse(registra == "si", dnmye_colores("azul verde"),dnmye_colores("pera"))) %>% 
       leaflet() %>% 
       addArgTiles() %>% 
-      addCircleMarkers(fillColor = ~color, color = ~color, label = ~total, popup = ~total)
+      addCircleMarkers(fillColor = ~color, color = ~color, 
+                       label = ~etiquetas, 
+                       popup = ~etiquetas) %>%
+      addLegend("bottomright", colors = c(dnmye_colores("azul verde"),
+                                          dnmye_colores("pera")),
+                labels = c("Registra visitas","No registra visitas"),
+                opacity = 1
+      )
       
   })
   
@@ -244,6 +263,12 @@ shinyServer(function(input, output, session) {
                     mark = ".", digits = 0 )
     })
   
+  output$notasDescarga <- downloadHandler(
+       "notas_areas_protegidas.xlsx",
+    content = function(file) {
+      writexl::write_xlsx(notas, file)
+    }
+  )
   
   #waiter_hide()
   

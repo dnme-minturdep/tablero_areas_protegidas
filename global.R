@@ -8,6 +8,7 @@ library(shinyWidgets) #trae distintos elementos de ui como el picker
 library(comunicacion)
 library(leaflet)
 library(geoAr)
+library(plotly)
 
 
 #se levanta la capa geografica y se le agregan los datos de visitantes del 2022 para mostrar en cada parque
@@ -22,9 +23,19 @@ datos_mapa <- areas_protegidas_total %>%
   summarise(total = sum(total, na.rm = T)) %>% 
   ungroup()
 
-mapa <- left_join(mapa, datos_mapa, by = c("parque_nacional" = "area_protegida"))
+mapa <- left_join(mapa, datos_mapa, by = c("parque_nacional" = "area_protegida")) %>% 
+  mutate(color = ifelse(registra == "si", dnmye_colores("azul verde"),dnmye_colores("pera")),
+         total = ifelse(is.na(total), "Sin registro", as.character(format(total, big.mark = "."))))
 
 
+notas <- readxl::read_excel("/srv/DataDNMYE/areas_protegidas/areas_protegidas_nacionales/notas.xlsx") %>% 
+  mutate(parque = str_to_title(parque),
+         indice_tiempo = ym(indice_tiempo)) %>% 
+  drop_na(notas)
+
+# areas_protegidas_total <- areas_protegidas_total %>% 
+#   left_join(notas, by = c("area_protegida"="parque", "indice_tiempo"))
+  
 #Opciones de configuración del picker, guardados en un objeto para no pasarlo a cada uno de ellos
 
 opciones_picker <- list(`actions-box` = TRUE,

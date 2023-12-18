@@ -22,10 +22,9 @@ shinyUI(
                       
                       h5(tags$p("Evolución mensual de las Visitas en Parques Nacionales según condición de residencia.")),
                       
-                      plotOutput("graficoPN"),
                       
                       fluidRow(
-                        column(width = 6,  plotOutput("graficoPN")), 
+                        column(width = 6,  plotlyOutput("graficoPN")), 
                         column(width = 6,  leafletOutput("mapaPN"))
                       ),
                       
@@ -106,6 +105,7 @@ shinyUI(
                                                   width = "100%"))
                           ),
                           
+                          fluidRow(
                           column(4, selectInput(inputId = "selectAgrupamiento",
                                                 label = "Mostrar por", 
                                                 choices = c(
@@ -118,6 +118,12 @@ shinyUI(
                                                 selected = "anio",
                                                 width = "100%"
                           )),
+                          
+                          column(2, br(),
+                                 downloadButton("notasDescarga", label = "Descargar notas"),
+                                 offset = 6)
+                          
+                          ),
                           
                           
                           dataTableOutput(outputId = "tablaAreas")
