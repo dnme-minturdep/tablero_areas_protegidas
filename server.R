@@ -44,7 +44,9 @@ shinyServer(function(input, output, session) {
   output$mapaPN <- renderLeaflet({
     mapa %>% 
       leaflet() %>% 
-      addArgTiles() %>% 
+      leaflet::addTiles(urlTemplate = "https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/mapabase_gris@EPSG%3A3857@png/{z}/{x}/{-y}.png",
+                        options = providerTileOptions(minZoom = 2), attribution = "ign") %>%
+      setMaxBounds(lat1 = 85, lat2 = -85.05, lng1 = 180, lng2 = -180) %>% 
       addCircleMarkers(fillColor = ~color, color = ~color, 
                        label = ~etiquetas, 
                        popup = ~etiquetas) %>%
@@ -53,7 +55,6 @@ shinyServer(function(input, output, session) {
                 labels = c("Registra visitas","No registra visitas"),
                 opacity = 1
       )
-      
   })
   
   ## TABLERO
