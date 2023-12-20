@@ -10,6 +10,8 @@ library(leaflet)
 library(geoAr)
 library(plotly)
 
+# setup idioma
+Sys.setlocale("LC_TIME", "es_AR.UTF-8")
 
 # language en DT::
 
