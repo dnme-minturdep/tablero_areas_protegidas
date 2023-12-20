@@ -14,7 +14,7 @@
 
   body { 
     font-family: 'Encode Sans Normal', Helvetica;
-    color:  'black';
+    color:  black;
     font-weight: 200;
     padding-top: 50px;
   }
@@ -28,7 +28,7 @@
        color: black;}
 
   li {
-    color: black;
+    color: white;
 }
 
 /* Add an image to navbar */
