@@ -25,7 +25,7 @@ shinyServer(function(input, output, session) {
                    date_labels = "%b-%y",
                    expand = c(.03,1)) +
       scale_y_continuous(limits = c(0,max(datos_grafico$visitantes)),
-                         labels = function(x){format(x, scientific = F)} ) +
+                         labels = function(x){format(x, scientific = F, big.mark = ".")} ) +
       theme_minimal() +
       xlab("") + ylab("")
     
