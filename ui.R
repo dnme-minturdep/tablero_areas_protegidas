@@ -200,7 +200,7 @@ shinyUI(
                           
                       
                       )
-             ),  footer = includeHTML("/srv/shiny-server/recursos/shiny_footer.html")
+             )#,  footer = includeHTML("/srv/shiny-server/recursos/shiny_footer.html") #descomentariar al pushear
   )
 ) 
  

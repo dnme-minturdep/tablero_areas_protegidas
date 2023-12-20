@@ -49,7 +49,7 @@ shinyServer(function(input, output, session) {
                        label = ~etiquetas, 
                        popup = ~etiquetas) %>%
       addLegend("bottomright", colors = c(dnmye_colores("purpura"),
-                                          dnmye_colores("cian")),
+                                          dnmye_colores("pera")),
                 labels = c("Registra visitas","No registra visitas"),
                 opacity = 1
       )

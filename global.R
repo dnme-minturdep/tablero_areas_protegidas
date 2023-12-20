@@ -29,7 +29,7 @@ datos_mapa <- areas_protegidas_total %>%
   ungroup()
 
 mapa <- left_join(mapa, datos_mapa, by = c("parque_nacional" = "area_protegida")) %>% 
-  mutate(color = ifelse(registra == "si", dnmye_colores("purpura"),dnmye_colores("cian")),
+  mutate(color = ifelse(registra == "si", dnmye_colores("purpura"),dnmye_colores("pera")),
          total = ifelse(is.na(total), "Sin registro", as.character(format(total, big.mark = "."))))
 
 
