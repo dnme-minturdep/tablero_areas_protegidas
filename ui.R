@@ -144,7 +144,20 @@ shinyUI(
                           dataTableOutput(outputId = "tablaAreas"),br(),
                           
                           fluidRow(width = 12,
-                                   tags$p(style="font-size: 14px; text-align: center;", tags$b('Fuentes de datos:'),(' La información fue elaborada por la Dirección Nacional de Mercados y Estadística (DNMyE), en base a datos aportados por la Dirección de Mercadeo de la Administración de Parques Nacionales (APN), el Departamento Observatorio Turístico del Chubut y el Parque Provincial Ischigualasto.'))
+                                   tags$p(style="font-size: 14px; text-align: center;", tags$b('Fuentes de datos:'),(' La información fue elaborada por la Dirección Nacional de Mercados y Estadística (DNMyE), en base a datos aportados por la Dirección de Mercadeo de la Administración de Parques Nacionales (APN), el Departamento Observatorio Turístico del Chubut y el Parque Provincial Ischigualasto.')),
+                                   
+                                   br(), 
+                                   h5("   Aquí puede acceder al último ", 
+                                      tags$a(href=" https://tableros.yvera.tur.ar/areas_protegidas.html", 
+                                             target = '_blank', 
+                                             "reporte, "),
+                                      tags$a(href="https://www.yvera.tur.ar/sinta/informe/info/areas-protegidas", 
+                                             target = '_blank', 
+                                             "informe mensual,"), 
+                                      tags$a(href="https://datos.yvera.gob.ar/dataset?groups=turismo-naturaleza", 
+                                             target = '_blank',
+                                             "y datos abiertos"),
+                                      "de Áreas Protegidas"),
                           
                       ))),
              
@@ -162,18 +175,16 @@ shinyUI(
                                          de visitas en 1 Parque Provincial en San Juan.")),
                       
                       
-                   
+                          br(),
                           
-                          br(),br(),
-                          
-                          p(style = "text-align: justify;",tags$b(style = "font-size: 15px;", "Aclaraciones metodológicas y marco conceptual")),
+                          h3(tags$p("Definiciones y conceptos")),
                           
                           tags$ul(
-                            tags$li(style = "color: black", tags$b("Visita:"), " entrada a un parque nacional con cualquier finalidad principal (ocio,negocios u otro motivo personal) y que no deba ser empleado por el parque nacional (cada vez que se cruza la frontera del área protegida, se genera una visita)."),br(),
+                            tags$li(style = "color: black", tags$b("Visita:"), " entrada a un parque nacional con cualquier finalidad principal (ocio,negocios u otro motivo personal) y que no deba ser empleado por el parque nacional (cada vez que se cruza la frontera del área protegida, se genera una visita."),br(),
                             tags$li(style = "color: black", tags$b("Unidades de observación:"), "Visitantes."),br(),
-                            tags$li(style = "color: black", tags$b("Unidades de análisis:"), "Nacionales: 41 áreas protegidas que producen información estadística de un total de 50 áreas nacionales (Parques Nacionales, Monumentos Naturales y Reservas Nacionales, Reservas Naturales, Reserva Natural Estricta y Reserva Natural Educativa). Provinciales: 5 Áreas Naturales Protegidas del Chubut, 1 Parque Provincial de San Juan"),br(),
-                            tags$li(style = "color: black", tags$b("Forma de colecta:"), "Las áreas protegidas contabilizan las visitas en base a la venta de boletos o al registro de visitantes en los diferentes portales de ingresos (pueden presentar más de un portal de acceso)."),br(),     
-                            tags$li(style = "color: black", tags$b("Período de referencia del dato:"), "Mensual)."),br(), 
+                            tags$li(style = "color: black", tags$b("Unidades de análisis:"), "Nacionales: 41 áreas protegidas que producen información estadística de un total de 50 áreas nacionales (Parques Nacionales, Monumentos Naturales y Reservas Nacionales, Reservas Naturales, Reserva Natural Estricta y Reserva Natural Educativa). Provinciales: 5 Áreas Naturales Protegidas del Chubut, 1 Parque Provincial de San Juan."),br(),
+                            tags$li(style = "color: black", tags$b("Forma de colecta:"), "Las áreas protegidas contabilizan las visitas en base a la venta de boletos o al registro de visitantes en los diferentes portales de ingresos (pueden presentar más de un portal de acceso."),br(),     
+                            tags$li(style = "color: black", tags$b("Período de referencia del dato:"), "Mensual."),br(), 
                             tags$li(style = "color: black", tags$b("Variables de estudio:"), "Cantidad de visitas realizadas de cada área protegida y condición de residencia en Áreas Protegidas Nacionales y del Chubut; total de visitas en el Parque Provincial Ischigualasto."),br(),
                             tags$li(style = "color: black", tags$b("Cobertura geográfica de las Áreas protegidas nacionales:"), "6 regiones turísticas compuestas por los siguientes Parques Nacionales:"),
                             tags$b("1. Región Buenos Aires:"), "Ciervo de los Pantanos.",br(),
@@ -185,13 +196,13 @@ shinyUI(
                             tags$li(style = "color: black", tags$b("Cobertura geográfica de las Áreas protegidas provinciales:"), "2 regiones turísticas compuestas por las siguientes áreas protegidas:"),
                             tags$b("3. Región Cuyo:"), "Ischigualasto.",br(),
                             tags$b("6. Región Patagonia:"), "Penísula Valdés, Punta Marqués, Bosque Petrificado Sarmiento, Punta Loma, Punta Tombo.",br(),br(),
-                            tags$li(style = "color: black", tags$b("Cobertura temporal - Áreas Protegidas Nacionales:"),"a partir del año 2008"),br(),
-                            tags$li(style = "color: black", tags$b("Cobertura temporal - Áreas Protegidas Provinciales:"),"Chubut: a partir del año 2000 (excepto Punta Marques, a partir del 2012. San Juan: a partir del 2000)."),br(),
-                            tags$li(style = "color: black", tags$b("*Notas:"),"A partir del 2021, se pueden descargar las notas que se presentan en los informes mensuales de visitas en áreas protegidas en un archivo .xlsx en la solapa", tags$b("Tablero."))
+                            tags$li(style = "color: black", tags$b("Cobertura temporal - Áreas Protegidas Nacionales:"),"a partir del año 2008."),br(),
+                            tags$li(style = "color: black", tags$b("Cobertura temporal - Áreas Protegidas Provinciales:"),"Chubut: a partir del año 2000 (excepto Punta Marques, a partir del 2012). San Juan: a partir del año 2000."),br(),
+                            tags$li(style = "color: black", tags$b("*Notas:"),"A partir del 2021, se pueden descargar las notas que se presentan en los informes mensuales de visitas en áreas protegidas en un archivo .xlsx en la solapa", tags$b("Tablero"), ". Refieren a una serie de eventos o situaciones particulares que impactaron en el movimiento de visitas al área protegida o incidieron sobre el registro de las mismas.")
                             ),
                           
                       br(),
-                          p(style = "text-align: justify;", tags$b(style = "font-size: 15px;","Fuentes de información:")),
+                      h3(tags$p("Fuentes de información:")),
                           
                           tags$ul(
                             tags$li(style = "color: black", tags$b("SIAPN:"), "Sistema de Administración de Parques Nacionales"), 
@@ -201,7 +212,7 @@ shinyUI(
                           
                       
                       )
-             ),  footer = includeHTML("/srv/shiny-server/recursos/shiny_footer.html") #descomentariar al pushear
+             )#,  footer = includeHTML("/srv/shiny-server/recursos/shiny_footer.html") #descomentariar al pushear
   )
 ) 
  
