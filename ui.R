@@ -200,7 +200,7 @@ shinyUI(
                           
                       
                       )
-             ),  footer = includeHTML("https://tableros.yvera.tur.ar/recursos/footer.html")
+             ),  footer = includeHTML("/srv/shiny-server/recursos/shiny_footer.html")
   )
 ) 
  
