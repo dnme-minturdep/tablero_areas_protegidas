@@ -48,8 +48,8 @@ shinyServer(function(input, output, session) {
       addCircleMarkers(fillColor = ~color, color = ~color, 
                        label = ~etiquetas, 
                        popup = ~etiquetas) %>%
-      addLegend("bottomright", colors = c(dnmye_colores("azul verde"),
-                                          dnmye_colores("pera")),
+      addLegend("bottomright", colors = c(dnmye_colores("purpura"),
+                                          dnmye_colores("cian")),
                 labels = c("Registra visitas","No registra visitas"),
                 opacity = 1
       )

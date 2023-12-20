@@ -29,7 +29,7 @@ shinyUI(
                       fluidRow(
                         column(width = 6,  plotlyOutput("graficoPN")), 
                         column(width = 6,  leafletOutput("mapaPN"))
-                      ),
+                      ),br(),
                       
                       fluidRow(width = 12,
                                tags$p(style="font-size: 14px; text-align: center;", tags$b('Fuentes de datos:'),(' La información fue elaborada por la Dirección Nacional de Mercados y Estadística (DNMyE), en base a datos aportados por la Dirección de Mercadeo de la Administración de Parques Nacionales (APN). El mapa fue elaborado en base a la capa de información geoespacial del Instituto Geográfico Nacional.'))
@@ -46,6 +46,11 @@ shinyUI(
              tabPanel("TABLERO",
                       
                       div(id="container-info",
+                          
+                          h4(tags$p("Los siguientes comandos permiten filtrar los datos")),
+                          
+                          h5(tags$p("*Datos hasta octubre 2023.")),br(),
+                          
                           
                           fluidRow(
                             
@@ -107,8 +112,12 @@ shinyUI(
                                                   options = opciones_picker,
                                                   selected = sort(unique(areas_protegidas_total$area_protegida)),
                                                   width = "100%"))
-                          ),
+                          ),br(),
                           
+                          
+                          h5(tags$p("Selecciona el nivel de apertura con que se visualizan los datos. Escriba varios términos en el buscador para mostrar más de una variable.")),
+                          
+                         
                           fluidRow(
                           column(4, selectInput(inputId = "selectAgrupamiento",
                                                 label = "Mostrar por", 
@@ -124,15 +133,22 @@ shinyUI(
                           )),
                           
                           column(2, br(),
-                                 downloadButton("notasDescarga", label = "Descargar notas"),
-                                 offset = 6)
+                                 downloadButton("notasDescarga", label = "*Descargar notas"),
+                                 h6(tags$p("*Disponible desde el año 2021 al presente.")),      
+                                 offset = 6),
+                          
                           
                           ),
                           
                           
-                          dataTableOutput(outputId = "tablaAreas")
+                          dataTableOutput(outputId = "tablaAreas"),br(),
                           
-                      )),
+                          fluidRow(width = 12,
+                                   tags$p(style="font-size: 14px; text-align: center;", tags$b('Fuentes de datos:'),(' La información fue elaborada por la Dirección Nacional de Mercados y Estadística (DNMyE), en base a datos aportados por la Dirección de Mercadeo de la Administración de Parques Nacionales (APN), el Departamento Observatorio Turístico del Chubut y el Parque Provincial Ischigualasto.'))
+                          
+                      ))),
+             
+             #Metodologia#
              
              tabPanel("METODOLOGÍA",
                       
@@ -141,7 +157,7 @@ shinyUI(
                                          de Mercadeo de la Administración de Parques Nacionales, del Departamento Observatorio
                                          Turístico del Chubut y del Parque Provincial Isghigualasto, encargados de recopilar y procesar
                                          los datos de visitas.")),
-                      h5(tags$p("La información suministrada permite la clasificación de las visitas en residentes argentinos y 
+                      h5(tags$p("La información suministrada permite la clasificación de las visitas en residentes y 
                                          no residentes en 41 Parques Nacionales y en 5 Áreas Naturales Protegidas del Chubut y el total 
                                          de visitas en 1 Parque Provincial en San Juan.")),
                       
@@ -155,18 +171,23 @@ shinyUI(
                           tags$ul(
                             tags$li(tags$b("Visita:"), " entrada a un parque nacional con cualquier finalidad principal (ocio,negocios u otro motivo personal) y que no deba ser empleado por el parque nacional (cada vez que se cruza la frontera del área protegida, se genera una visita)."),br(),
                             tags$li(tags$b("Unidades de observación:"), "Visitantes."),br(),
-                            tags$li(tags$b("Unidades de análisis:"), "41 áreas protegidas que producen información estadística de un total de 50 áreas nacionales en el país (Parques Nacionales, Monumentos Naturales y Reservas Nacionales,Reservas Naturales, Reserva Natural Estricta y Reserva Natural Educativa"),br(),
+                            tags$li(tags$b("Unidades de análisis:"), "Nacionales: 41 áreas protegidas que producen información estadística de un total de 50 áreas nacionales (Parques Nacionales, Monumentos Naturales y Reservas Nacionales, Reservas Naturales, Reserva Natural Estricta y Reserva Natural Educativa). Provinciales: 5 Áreas Naturales Protegidas del Chubut, 1 Parque Provincial de San Juan"),br(),
                             tags$li(tags$b("Forma de colecta:"), "Las áreas protegidas contabilizan las visitas en base a la venta de boletos o al registro de visitantes en los diferentes portales de ingresos (pueden presentar más de un portal de acceso)."),br(),     
-                            tags$li(tags$b("Variables de estudio:"), "Cantidad de visitas realizadas de cada área protegida y condición de residencia de los mismos."),br(),
-                            tags$li(tags$b("Cobertura geográfica:"), "6 regiones turísticas compuestas por los siguientes Parques Nacionales:"),
+                            tags$li(tags$b("Período de referencia del dato:"), "Mensual)."),br(), 
+                            tags$li(tags$b("Variables de estudio:"), "Cantidad de visitas realizadas de cada área protegida y condición de residencia en Áreas Protegidas Nacionales y del Chubut; total de visitas en el Parque Provincial Ischigualasto."),br(),
+                            tags$li(tags$b("Cobertura geográfica de las Áreas protegidas nacionales:"), "6 regiones turísticas compuestas por los siguientes Parques Nacionales:"),
                             tags$b("1. Región Buenos Aires:"), "Ciervo de los Pantanos.",br(),
                             tags$b("2. Región Córdoba:"), "Quebrada del Condorito, Traslasierra.",br(),
                             tags$b("3. Región Cuyo:"), "Sierra de las Quijadas, El Leoncito, San Guillermo.",br(),
                             tags$b("4. Región Litoral:"), "Iguazú, El Palmar, Predelta, Río Pilcomayo, Chaco, Mburucuyá, Iberá, El Impenetrable, Colonia Benítez, Formosa, Campo San Juan.", br(),
                             tags$b("5. Región Norte:"), "Talampaya, Los Cardones, Calilegua, Aconquija, El Rey, Baritú,Copo, Laguna de los Pozuelos, El Nogalar de los Toldos, Pizarro.", br(),
-                            tags$b("6. Región Patagonia:"), "Los Glaciares, Nahuel Huapi, Tierra del Fuego, Los Alerces,Lago Puelo, Lanín, Laguna Blanca, Lihué Calel, Monte León, Perito Moreno, Bosques Petrificados, Los Arrayanes, Isla Pingüino, Patagonia.",br(),
-                            tags$li(tags$b("Notas:"),"A partir del 2021, se pueden descargar las notas que se presentan en los informes mensuales de visitas en áreas protegidas en un archivo .xlsx en la solapa", tags$b("Tablero.")),
-                            
+                            tags$b("6. Región Patagonia:"), "Los Glaciares, Nahuel Huapi, Tierra del Fuego, Los Alerces,Lago Puelo, Lanín, Laguna Blanca, Lihué Calel, Monte León, Perito Moreno, Bosques Petrificados, Los Arrayanes, Isla Pingüino, Patagonia.",br(),br(),
+                            tags$li(tags$b("Cobertura geográfica de las Áreas protegidas provinciales:"), "2 regiones turísticas compuestas por las siguientes áreas protegidas:"),
+                            tags$b("3. Región Cuyo:"), "Ischigualasto.",br(),
+                            tags$b("6. Región Patagonia:"), "Penísula Valdés, Punta Marqués, Bosque Petrificado Sarmiento, Punta Loma, Punta Tombo.",br(),br(),
+                            tags$li(tags$b("Cobertura temporal - Áreas Protegidas Nacionales:"),"a partir del año 2008"),br(),
+                            tags$li(tags$b("Cobertura temporal - Áreas Protegidas Provinciales:"),"Chubut: a partir del año 2000 (excepto Punta Marques, a partir del 2012. San Juan: a partir del 2000)."),br(),
+                            tags$li(tags$b("*Notas:"),"A partir del 2021, se pueden descargar las notas que se presentan en los informes mensuales de visitas en áreas protegidas en un archivo .xlsx en la solapa", tags$b("Tablero.")),br(),br(),  
                             ),
                           
                           br(),br(),
@@ -175,15 +196,15 @@ shinyUI(
                           tags$ul(
                             tags$li(tags$b("SIAPN:"), "Sistema de Administración de Parques Nacionales"), 
                             tags$li(tags$b("Chubut:"), "Departamento Observatorio Turístico del Chubut"), 
-                            tags$li(tags$b("San Juan:"), "Paque Provincial Ischigualasto")) 
+                            tags$li(tags$b("San Juan:"), "Parque Provincial Ischigualasto")), 
                           
-                          
+                      
                       )
-             )
+             ),  footer = includeHTML("https://tableros.yvera.tur.ar/recursos/footer.html")
   )
 ) 
  
-             # footer = includeHTML("https://tableros.yvera.tur.ar/recursos/footer.html")
+             
   
 
 

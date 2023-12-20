@@ -11,6 +11,11 @@ library(geoAr)
 library(plotly)
 
 
+# language en DT::
+
+options(DT.options = list(language = list(url = '//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json')))
+
+
 #se levanta la capa geografica y se le agregan los datos de visitantes del 2022 para mostrar en cada parque
 
 mapa <- read_file_srv("/srv/DataDNMYE/capas_sig/areas_protegidas_nacionales.gpkg")
@@ -24,7 +29,7 @@ datos_mapa <- areas_protegidas_total %>%
   ungroup()
 
 mapa <- left_join(mapa, datos_mapa, by = c("parque_nacional" = "area_protegida")) %>% 
-  mutate(color = ifelse(registra == "si", dnmye_colores("azul verde"),dnmye_colores("pera")),
+  mutate(color = ifelse(registra == "si", dnmye_colores("purpura"),dnmye_colores("cian")),
          total = ifelse(is.na(total), "Sin registro", as.character(format(total, big.mark = "."))))
 
 
