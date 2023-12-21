@@ -66,7 +66,7 @@ shinyUI(
                             
                             column(4, pickerInput(inputId = "selectMes", 
                                                   label = "Mes:",
-                                                  choices = sort(unique(areas_protegidas_total$Mes)),
+                                                  choices = sort(unique(as.character(areas_protegidas_total$Mes))),
                                                   multiple = T,
                                                   options = c(opciones_picker,
                                                               `selected-text-format` = paste0("count > ", 11)),

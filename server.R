@@ -74,7 +74,7 @@ shinyServer(function(input, output, session) {
   observeEvent(input$selectAnio, {
 
       #Opciones (unique sobre la variable mes de los años seleccionados)
-      opts <- unique(data_anio()$Mes)
+      opts <- unique(as.character(data_anio()$Mes))
       
 
       #Actualizando el pickerinput mes con las opciones filtradas

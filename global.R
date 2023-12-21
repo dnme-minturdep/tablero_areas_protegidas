@@ -22,7 +22,10 @@ options(DT.options = list(language = list(url = '//cdn.datatables.net/plug-ins/1
 
 mapa <- read_file_srv("/srv/DataDNMYE/capas_sig/areas_protegidas_nacionales.gpkg")
 
-areas_protegidas_total <- read_file_srv("areas_protegidas/base_shiny/areas_consolidado.rds")
+areas_protegidas_total <- read_file_srv("areas_protegidas/base_shiny/areas_consolidado.rds") %>% 
+  mutate(Mes = factor(Mes, levels = c("Enero","Febrero","Marzo","Abril",
+                                      "Mayo","Junio","Julio","Agosto",
+                                      "Septiembre","Octubre","Noviembre", "Diciembre"), ordered = T))
 
 datos_mapa <- areas_protegidas_total %>% 
   filter(anio == 2022) %>% 
@@ -51,14 +54,3 @@ opciones_picker <- list(`actions-box` = TRUE,
                         `none-selected-text` = "Sin selección",
                         `live-search`=TRUE,
                         `count-selected-text` = "Todos")
-
-#definicion ultimo mes disponible
-
-mes <- areas_protegidas_total %>% 
-  filter(indice_tiempo == max(areas_protegidas_total$indice_tiempo)) %>% 
-  pull(Mes) %>% 
-  unique()
-anio <- areas_protegidas_total %>% 
-  filter(indice_tiempo== max(areas_protegidas_total$indice_tiempo)) %>% 
-  pull(anio) %>% 
-  unique()
