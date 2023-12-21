@@ -51,3 +51,14 @@ opciones_picker <- list(`actions-box` = TRUE,
                         `none-selected-text` = "Sin selección",
                         `live-search`=TRUE,
                         `count-selected-text` = "Todos")
+
+#definicion ultimo mes disponible
+
+mes <- areas_protegidas_total %>% 
+  filter(indice_tiempo == max(areas_protegidas_total$indice_tiempo)) %>% 
+  pull(Mes) %>% 
+  unique()
+anio <- areas_protegidas_total %>% 
+  filter(indice_tiempo== max(areas_protegidas_total$indice_tiempo)) %>% 
+  pull(anio) %>% 
+  unique()

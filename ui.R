@@ -49,7 +49,7 @@ shinyUI(
                           
                           h4(tags$p("Los siguientes comandos permiten filtrar los datos")),
                           
-                          h5(tags$p("*Datos hasta octubre 2023.")),br(),
+                          h5(tags$p(paste("*Datos hasta", mes, anio, sep = " ")),br(),
                           
                           
                           fluidRow(
@@ -135,7 +135,7 @@ shinyUI(
                           column(2, br(),
                                  downloadButton("notasDescarga", label = "*Descargar notas"),
                                  h6(tags$p("*Disponible desde el año 2021 al presente.")),      
-                                 offset = 6),
+                                 offset = 6)
                           
                           
                           ),
@@ -157,9 +157,12 @@ shinyUI(
                                       tags$a(href="https://datos.yvera.gob.ar/dataset?groups=turismo-naturaleza", 
                                              target = '_blank',
                                              "y datos abiertos"),
-                                      "de Áreas Protegidas"),
+                                      "de Áreas Protegidas")
                           
-                      ))),
+                      ))
+                      )
+                      
+                  ),
              
              #Metodologia#
              
@@ -212,9 +215,10 @@ shinyUI(
                           
                       
                       )
-             ),  footer = includeHTML("/srv/shiny-server/recursos/shiny_footer.html") #descomentariar al pushear
+             )#,  footer = includeHTML("/srv/shiny-server/recursos/shiny_footer.html") #descomentariar al pushear
   )
-) 
+)
+
  
              
   
