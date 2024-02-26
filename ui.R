@@ -145,7 +145,9 @@ shinyUI(
                           
                           
                           dataTableOutput(outputId = "tablaAreas"),
-                          downloadButton("dataDescarga","Descargar en excel"),
+                          
+                          fluidRow(downloadButton("downloadExcel","Descargar en excel"),
+                                   downloadButton("downloadCSV","Descargar en csv")),
                           
                           br(),
                           

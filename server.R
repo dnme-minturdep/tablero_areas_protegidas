@@ -266,10 +266,21 @@ shinyServer(function(input, output, session) {
                     mark = ".", digits = 0 )
     })
   
-  output$dataDescarga <- downloadHandler(
-    "areas_protegidas.xlsx",
+  output$downloadExcel <- downloadHandler(
+    filename = function() {
+      "areas_protegidas.xlsx"
+    },
     content = function(file) {
       writexl::write_xlsx(data_final(), file)
+    }
+  )
+  
+  output$downloadCSV <- downloadHandler(
+    filename = function() {
+      "areas_protegidas.csv"
+    },
+    content = function(file) {
+      write_csv(data_final(), file)
     }
   )
   
