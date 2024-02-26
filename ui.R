@@ -16,6 +16,9 @@ shinyUI(
              
              tabPanel("RESUMEN",
                       
+                      useWaiter(),
+                      waiter_show_on_load(html = loading_screen, color = "white"),
+                      
                       div(id="container-info",
                           
                       h4(tags$p("El tablero de ÁREAS PROTEGIDAS presenta información de visitas en parques nacionales y provinciales según condición de residencia en Argentina. Para conocer detalles por Área Protegida, ingresá a la pestaña ", tags$b("TABLERO"), "; para más información sobre las fuentes de datos ingresa a la pestaña ",tags$b("METODOLOGIA."))),
@@ -23,7 +26,7 @@ shinyUI(
                       
                       fluidRow(
                         column(width = 6, h5(tags$p("Evolución mensual de las Visitas en Parques Nacionales según condición de residencia."))),
-                        column(width = 6,  h5(tags$p("Áreas Protegidas Nacionales según registro de visitas. Año 2022")))    
+                        column(width = 6,  h5(tags$p("Áreas Protegidas Nacionales según registro de visitas. Año 2023")))    
                                ),
                       
                       fluidRow(
@@ -141,7 +144,10 @@ shinyUI(
                           ),
                           
                           
-                          dataTableOutput(outputId = "tablaAreas"),br(),
+                          dataTableOutput(outputId = "tablaAreas"),
+                          downloadButton("dataDescarga","Descargar en excel"),
+                          
+                          br(),
                           
                           fluidRow(width = 12,
                                    tags$p(style="font-size: 14px; text-align: center;", tags$b('Fuentes de datos:'),(' La información fue elaborada por la Dirección Nacional de Mercados y Estadística (DNMyE), en base a datos aportados por la Dirección de Mercadeo de la Administración de Parques Nacionales (APN), el Departamento Observatorio Turístico del Chubut y el Parque Provincial Ischigualasto.')),

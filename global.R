@@ -9,6 +9,7 @@ library(comunicacion)
 library(leaflet)
 library(geoAr)
 library(plotly)
+library(waiter)
 
 # setup idioma
 Sys.setlocale("LC_TIME", "es_AR.UTF-8")
@@ -28,7 +29,7 @@ areas_protegidas_total <- read_file_srv("areas_protegidas/base_shiny/areas_conso
                                       "Septiembre","Octubre","Noviembre", "Diciembre"), ordered = T))
 
 datos_mapa <- areas_protegidas_total %>% 
-  filter(anio == 2022) %>% 
+  filter(anio == 2023) %>% 
   group_by(area_protegida) %>% 
   summarise(total = sum(total, na.rm = T)) %>% 
   ungroup()
@@ -62,3 +63,11 @@ mes <- areas_protegidas_total %>%
 anio <- areas_protegidas_total %>% 
   filter(anio == max(areas_protegidas_total$anio)) %>% 
   pull(anio) %>% unique()
+
+
+# Cargo el mensaje de espera. 
+loading_screen <- tagList(
+  h3("Cargando...", style = "color:gray;"),
+  img(src = "https://tableros.yvera.tur.ar/recursos/logo_mintur_color.png",
+      height = "200px")
+)

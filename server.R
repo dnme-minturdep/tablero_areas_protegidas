@@ -45,7 +45,7 @@ shinyServer(function(input, output, session) {
     mapa %>% 
       leaflet() %>% 
       leaflet::addTiles(urlTemplate = "https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/mapabase_gris@EPSG%3A3857@png/{z}/{x}/{-y}.png",
-                        options = providerTileOptions(minZoom = 2), attribution = "ign") %>%
+                        options = providerTileOptions(minZoom = 2), attribution = "IGN") %>%
       setMaxBounds(lat1 = 85, lat2 = -85.05, lng1 = 180, lng2 = -180) %>% 
       addCircleMarkers(fillColor = ~color, color = ~color, 
                        label = ~etiquetas, 
@@ -195,7 +195,6 @@ shinyServer(function(input, output, session) {
       req(input$selectAreaProtegida)
       
       data_provincia() %>% 
-        
         filter(area_protegida %in% input$selectAreaProtegida)
       
     })  
@@ -224,45 +223,55 @@ shinyServer(function(input, output, session) {
       
     })  
     
+    data_final <- reactive({
+      
+    data_ap() %>% 
+      # rename("Año" = anio,
+      #                      "Categoria" = categoria,
+      #                      "Región" = region,
+      #                      "Provincia" = provincia,
+      #                      "Área Protegida" = area_protegida) %>%  
+      group_by_at(.vars = c("anio", input$selectAgrupamiento)) %>%
+      summarise("Total" = round(sum(total, na.rm = T)),
+                "Residentes" = round(sum(residentes, na.rm = T)),
+                "No residentes" = round(sum(no_residentes, na.rm = T))) %>% 
+      rename(any_of(c(
+        "Año" = "anio",
+        "Región" = "region",
+        "Provincia" = "provincia",
+        "Área Protegida" = "area_protegida"
+      ))) %>% 
+      ungroup()
     
-# observe(
-#   print(data_ap())
-# )
-  
+    })
+    
+    
   output$tablaAreas <- renderDataTable(
     server = F,{
-   datatable(extensions = 'Buttons',
+   datatable(#extensions = 'Buttons',
                   options = list(lengthMenu = c(10, 25, 50), pageLength = 10, #cuantas filas se muestran en la tabla
-                                 dom = 'lfrtipB', #para paginado debajo para navegar, la cajita de busqueda 
-                                 buttons = list('copy', 
-                                                list(
-                                                  extend = 'collection',
-                                                  buttons = list(list(extend = 'csv', filename = "area_protegida"), #para descargar la tabla que muestra
-                                                                 list(extend = 'excel', filename = "area_protegida")),
-                                                  text = 'Download'
-                                                ))),
-                  data_ap() %>% 
-               # rename("Año" = anio,
-               #                      "Categoria" = categoria,
-               #                      "Región" = region,
-               #                      "Provincia" = provincia,
-               #                      "Área Protegida" = area_protegida) %>%  
-                    group_by_at(.vars = c("anio", input$selectAgrupamiento)) %>%
-                    summarise("Total" = round(sum(total, na.rm = T)),
-                               "Residentes" = round(sum(residentes, na.rm = T)),
-                               "No residentes" = round(sum(no_residentes, na.rm = T))) %>% 
-               rename(any_of(c(
-                 "Año" = "anio",
-                 "Región" = "region",
-                 "Provincia" = "provincia",
-                 "Área Protegida" = "area_protegida"
-               )))
-                               
-                    ,  
+                                 dom = 'lfrtipB' #para paginado debajo para navegar, la cajita de busqueda 
+                                 # buttons = list('copy', 
+                                 #                list(
+                                 #                  extend = 'collection',
+                                 #                  buttons = list(list(extend = 'csv', filename = "area_protegida"), #para descargar la tabla que muestra
+                                 #                                 list(extend = 'excel', filename = "area_protegida")),
+                                 #                  text = 'Download'
+                                 #                ))
+                                 ),
+                  
+                  data_final(),  
                   rownames= FALSE) %>% 
         formatRound(columns = c("Total", "Residentes", "No residentes"),
                     mark = ".", digits = 0 )
     })
+  
+  output$dataDescarga <- downloadHandler(
+    "areas_protegidas.xlsx",
+    content = function(file) {
+      writexl::write_xlsx(data_final(), file)
+    }
+  )
   
   output$notasDescarga <- downloadHandler(
        "notas_areas_protegidas.xlsx",
@@ -271,7 +280,7 @@ shinyServer(function(input, output, session) {
     }
   )
   
-  #waiter_hide()
+  waiter_hide()
   
 })
     
