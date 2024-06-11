@@ -35,7 +35,7 @@ shinyUI(
                       ),br(),
                       
                       fluidRow(width = 12,
-                               tags$p(style="font-size: 14px; text-align: center;", tags$b('Fuentes de datos:'),(' La información fue elaborada por la Dirección Nacional de Mercados y Estadística (DNMyE), en base a datos aportados por la Dirección de Mercadeo de la Administración de Parques Nacionales (APN). El mapa fue elaborado en base a la capa de información geoespacial del Instituto Geográfico Nacional.'))
+                               tags$p(style="font-size: 14px; text-align: center;", tags$b('Fuentes de datos:'),(' La información fue elaborada por la Dirección Nacional de Mercados y Estadística (DNMyE), en base a datos aportados por la Dirección Nacional de Uso Público de la Administración de Parques Nacionales (APN). El mapa fue elaborado en base a la capa de información geoespacial del Instituto Geográfico Nacional.'))
                                
                       )
                       
@@ -178,11 +178,11 @@ shinyUI(
                       
                       div(id="container-info",
                       h5(tags$p("Los datos presentados en este tablero surgen de los registros administrativos de la Dirección 
-                                         de Mercadeo de la Administración de Parques Nacionales, del Departamento Observatorio
+                                         Nacional de Uso Público de la Administración de Parques Nacionales, del Departamento Observatorio
                                          Turístico del Chubut y del Parque Provincial Isghigualasto, encargados de recopilar y procesar
                                          los datos de visitas.")),
                       h5(tags$p("La información suministrada permite la clasificación de las visitas en residentes y 
-                                         no residentes en 42 Parques Nacionales, en 5 Áreas Naturales Protegidas del Chubut y en 1 Parque Provincial en San Juan. En enero 2024 se incorporó el registro de visitas en el PN Ansenuza.")),
+                                         no residentes en 41 Parques Nacionales, en 5 Áreas Naturales Protegidas del Chubut y en 1 Parque Provincial en San Juan. En enero 2024 se incorporó el registro de visitas en el PN Ansenuza.")),
                       
                       
                           br(),
@@ -192,7 +192,7 @@ shinyUI(
                           tags$ul(
                             tags$li(style = "color: black", tags$b("Visita:"), " entrada a un parque nacional con cualquier finalidad principal (ocio,negocios u otro motivo personal) y que no deba ser empleado por el parque nacional (cada vez que se cruza la frontera del área protegida, se genera una visita."),br(),
                             tags$li(style = "color: black", tags$b("Unidades de observación:"), "Visitantes."),br(),
-                            tags$li(style = "color: black", tags$b("Unidades de análisis:"), "Nacionales: 42 áreas protegidas que producen información estadística de un total de 55 áreas nacionales (Parques Nacionales, Monumentos Naturales y Reservas Nacionales, Reservas Naturales, Reserva Natural Estricta y Reserva Natural Educativa). Provinciales: 5 Áreas Naturales Protegidas del Chubut, 1 Parque Provincial de San Juan."),br(),
+                            tags$li(style = "color: black", tags$b("Unidades de análisis:"), "Nacionales: 41 áreas protegidas que producen información estadística de un total de 55 áreas nacionales (Parques Nacionales, Monumentos Naturales y Reservas Nacionales, Reservas Naturales, Reserva Natural Estricta y Reserva Natural Educativa). Provinciales: 5 Áreas Naturales Protegidas del Chubut, 1 Parque Provincial de San Juan."),br(),
                             tags$li(style = "color: black", tags$b("Forma de colecta:"), "Las áreas protegidas contabilizan las visitas en base a la venta de boletos o al registro de visitantes en los diferentes portales de ingresos (pueden presentar más de un portal de acceso."),br(),     
                             tags$li(style = "color: black", tags$b("Período de referencia del dato:"), "Mensual."),br(), 
                             tags$li(style = "color: black", tags$b("Variables de estudio:"), "Cantidad de visitas realizadas de cada área protegida y condición de residencia en Áreas Protegidas Nacionales y del Chubut; total de visitas en el Parque Provincial Ischigualasto."),br(),
@@ -222,7 +222,7 @@ shinyUI(
                           
                       
                       )
-             ),  footer = includeHTML("/srv/shiny-server/recursos/shiny_footer.html") #descomentariar al pushear
+             ),  #footer = includeHTML("/srv/shiny-server/recursos/shiny_footer.html") #descomentariar al pushear
   )
 )
 
