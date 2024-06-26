@@ -13,9 +13,9 @@ shinyUI(
              collapsible = TRUE,
              header = includeCSS("styles.css"), 
              
-             tags$head(includeHTML("/srv/DataDNMYE/login_shiny/areas-protegidas.html")),
-             
              tabPanel("RESUMEN",
+                      
+                      tags$head(includeHTML("/srv/DataDNMYE/login_shiny/areas-protegidas.html")),
                       
                       useWaiter(),
                       waiter_show_on_load(html = loading_screen, color = "white"),
