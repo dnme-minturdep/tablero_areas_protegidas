@@ -13,6 +13,7 @@ shinyUI(
              collapsible = TRUE,
              header = includeCSS("styles.css"), 
              
+             tags$head(includeHTML("/srv/DataDNMYE/login_shiny/areas-protegidas.html")),
              
              tabPanel("RESUMEN",
                       
