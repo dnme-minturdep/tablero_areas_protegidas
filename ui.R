@@ -183,7 +183,7 @@ shinyUI(
                                          Turístico del Chubut y del Parque Provincial Isghigualasto, encargados de recopilar y procesar
                                          los datos de visitas.")),
                       h5(tags$p("La información suministrada permite la clasificación de las visitas en residentes y 
-                                         no residentes en 41 Parques Nacionales, en 5 Áreas Naturales Protegidas del Chubut y en 1 Parque Provincial en San Juan. En enero 2024 se incorporó el registro de visitas en el PN Ansenuza.")),
+                                         no residentes en 42 Parques Nacionales, en 5 Áreas Naturales Protegidas del Chubut y en 1 Parque Provincial en San Juan. En enero 2024 se incorporó el registro de visitas en el PN Ansenuza y en julio 2024 el PN Islas de Santa Fe.")),
                       
                       
                           br(),
@@ -201,7 +201,7 @@ shinyUI(
                             tags$b("1. Región Buenos Aires:"), "Ciervo de los Pantanos.",br(),
                             tags$b("2. Región Córdoba:"), "Quebrada del Condorito, Traslasierra.",br(),
                             tags$b("3. Región Cuyo:"), "Sierra de las Quijadas, El Leoncito, San Guillermo.",br(),
-                            tags$b("4. Región Litoral:"), "Iguazú, El Palmar, Predelta, Río Pilcomayo, Chaco, Mburucuyá, Iberá, El Impenetrable, Colonia Benítez, Formosa, Campo San Juan.", br(),
+                            tags$b("4. Región Litoral:"), "Iguazú, El Palmar, Predelta, Río Pilcomayo, Chaco, Mburucuyá, Iberá, El Impenetrable, Colonia Benítez, Formosa, Campo San Juan, Islas de Santa Fe.", br(),
                             tags$b("5. Región Norte:"), "Talampaya, Los Cardones, Calilegua, Aconquija, El Rey, Baritú,Copo, Laguna de los Pozuelos, El Nogalar de los Toldos, Pizarro.", br(),
                             tags$b("6. Región Patagonia:"), "Los Glaciares, Nahuel Huapi, Tierra del Fuego, Los Alerces,Lago Puelo, Lanín, Laguna Blanca, Lihué Calel, Monte León, Perito Moreno, Bosques Petrificados, Los Arrayanes, Isla Pingüino, Patagonia.",br(),br(),
                             tags$li(style = "color: black", tags$b("Cobertura geográfica de las Áreas protegidas provinciales:"), "2 regiones turísticas compuestas por las siguientes áreas protegidas:"),
