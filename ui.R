@@ -4,7 +4,7 @@ shinyUI(
                            div(
                              id = "img-id",
                              tags$a(img(src = "https://tableros.yvera.tur.ar/recursos/logo_sinta.png",
-                                        width = 150),href="https://www.yvera.tur.ar/sinta/",target = '_blank'
+                                        width = 100),href="https://www.yvera.tur.ar/sinta/",target = '_blank'
                              )),
                            icon("tree"),"ÁREAS PROTEGIDAS", id = "title", class = "navbar1"),
              id="navbar",
@@ -13,8 +13,9 @@ shinyUI(
              collapsible = TRUE,
              header = includeCSS("styles.css"), 
              
-             
              tabPanel("RESUMEN",
+                      
+                      tags$head(includeHTML("/srv/DataDNMYE/login_shiny/areas-protegidas.html")),
                       
                       useWaiter(),
                       waiter_show_on_load(html = loading_screen, color = "white"),
@@ -222,7 +223,7 @@ shinyUI(
                           
                       
                       )
-             ),  #footer = includeHTML("/srv/shiny-server/recursos/shiny_footer.html") #descomentariar al pushear
+             ),  footer = includeHTML("/srv/shiny-server/recursos/shiny_footer.html") #descomentariar al pushear
   )
 )
 
