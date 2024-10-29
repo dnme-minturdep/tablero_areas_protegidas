@@ -24,7 +24,8 @@ options(DT.options = list(language = list(url = '//cdn.datatables.net/plug-ins/1
 mapa <- read_file_srv("/srv/DataDNMYE/capas_sig/areas_protegidas_nacionales.gpkg")
 
 areas_protegidas_total <- read_file_srv("areas_protegidas/base_shiny/areas_consolidado.rds") %>% 
-  mutate(Mes = factor(Mes, levels = c("Enero","Febrero","Marzo","Abril",
+  mutate(Mes = str_to_sentence(Mes),
+    Mes = factor(Mes, levels = c("Enero","Febrero","Marzo","Abril",
                                       "Mayo","Junio","Julio","Agosto",
                                       "Septiembre","Octubre","Noviembre", "Diciembre"), ordered = T))
 
@@ -42,7 +43,8 @@ mapa <- left_join(mapa, datos_mapa, by = c("parque_nacional" = "area_protegida")
 notas <- read_file_srv("/srv/DataDNMYE/areas_protegidas/areas_protegidas_nacionales/notas.xlsx") %>% 
   mutate(parque = str_to_title(parque),
          indice_tiempo = ym(indice_tiempo)) %>% 
-  drop_na(notas)
+  drop_na(notas) %>% 
+  select(1:4)
 
 # areas_protegidas_total <- areas_protegidas_total %>% 
 #   left_join(notas, by = c("area_protegida"="parque", "indice_tiempo"))
