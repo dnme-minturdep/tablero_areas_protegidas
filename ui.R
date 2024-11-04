@@ -61,7 +61,7 @@ shinyUI(
                             column(4,pickerInput(inputId = "selectAnio", multiple = TRUE,
                                                  label = "Año:",
                                                  choices = sort(unique(areas_protegidas_total$anio)),
-                                                 selected = sort(unique(areas_protegidas_total$anio)),
+                                                 selected = max(sort(unique(areas_protegidas_total$anio))),
                                                  options = c(opciones_picker,
                                                              `selected-text-format` = paste0("count > ",  n_distinct(areas_protegidas_total$anio)-1)),
                                                  width = "100%")),
@@ -218,7 +218,7 @@ shinyUI(
                           tags$ul(
                             tags$li(style = "color: black", tags$b("SIAPN:"), "Sistema de Administración de Parques Nacionales"), 
                             tags$li(style = "color: black", tags$b("Chubut:"), "Departamento Observatorio Turístico del Chubut"), 
-                            tags$li(style = "color: black", tags$b("San Juan:"), "Parque Provincial Ischigualasto")),
+                            tags$li(style = "color: black", tags$b("San Juan:"), "Parque Provincial Ischigualasto"),
                             tags$li(style = "color: black", tags$b("Corrientes:"), "Gran Parque Iberá")),
                       br()
                           
