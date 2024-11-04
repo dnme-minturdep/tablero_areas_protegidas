@@ -196,7 +196,7 @@ shinyUI(
                             tags$li(style = "color: black", tags$b("Unidades de análisis:"), "Nacionales: 42 áreas protegidas que producen información estadística de un total de 55 áreas nacionales (Parques Nacionales, Monumentos Naturales y Reservas Nacionales, Reservas Naturales, Reserva Natural Estricta y Reserva Natural Educativa). Provinciales: 5 Áreas Naturales Protegidas del Chubut, 1 Parque Provincial de San Juan."),br(),
                             tags$li(style = "color: black", tags$b("Forma de colecta:"), "Las áreas protegidas contabilizan las visitas en base a la venta de boletos o al registro de visitantes en los diferentes portales de ingresos (pueden presentar más de un portal de acceso."),br(),     
                             tags$li(style = "color: black", tags$b("Período de referencia del dato:"), "Mensual."),br(), 
-                            tags$li(style = "color: black", tags$b("Variables de estudio:"), "Cantidad de visitas realizadas de cada área protegida y condición de residencia en Áreas Protegidas Nacionales y del Chubut; total de visitas en el Parque Provincial Ischigualasto."),br(),
+                            tags$li(style = "color: black", tags$b("Variables de estudio:"), "Cantidad de visitas realizadas de cada área protegida y condición de residencia en Áreas Protegidas Nacionales, del Chubut y San Juan; total de visitas en el Gran Parque Iberá."),br(),
                             tags$li(style = "color: black", tags$b("Cobertura geográfica de las Áreas protegidas nacionales:"), "6 regiones turísticas compuestas por los siguientes Parques Nacionales:"),
                             tags$b("1. Región Buenos Aires:"), "Ciervo de los Pantanos.",br(),
                             tags$b("2. Región Córdoba:"), "Quebrada del Condorito, Traslasierra.",br(),
@@ -204,8 +204,9 @@ shinyUI(
                             tags$b("4. Región Litoral:"), "Iguazú, El Palmar, Predelta, Río Pilcomayo, Chaco, Mburucuyá, Iberá, El Impenetrable, Colonia Benítez, Formosa, Campo San Juan, Islas de Santa Fe.", br(),
                             tags$b("5. Región Norte:"), "Talampaya, Los Cardones, Calilegua, Aconquija, El Rey, Baritú,Copo, Laguna de los Pozuelos, El Nogalar de los Toldos, Pizarro.", br(),
                             tags$b("6. Región Patagonia:"), "Los Glaciares, Nahuel Huapi, Tierra del Fuego, Los Alerces,Lago Puelo, Lanín, Laguna Blanca, Lihué Calel, Monte León, Perito Moreno, Bosques Petrificados, Los Arrayanes, Isla Pingüino, Patagonia.",br(),br(),
-                            tags$li(style = "color: black", tags$b("Cobertura geográfica de las Áreas protegidas provinciales:"), "2 regiones turísticas compuestas por las siguientes áreas protegidas:"),
+                            tags$li(style = "color: black", tags$b("Cobertura geográfica de las Áreas protegidas provinciales:"), "3 regiones turísticas compuestas por las siguientes áreas protegidas:"),
                             tags$b("3. Región Cuyo:"), "Ischigualasto.",br(),
+                            tags$b("3. Región Litoral:"), "Gran Parque Iberá.",br(),
                             tags$b("6. Región Patagonia:"), "Penísula Valdés, Punta Marqués, Bosque Petrificado Sarmiento, Punta Loma, Punta Tombo.",br(),br(),
                             tags$li(style = "color: black", tags$b("Cobertura temporal - Áreas Protegidas Nacionales:"),"a partir del año 2008."),br(),
                             tags$li(style = "color: black", tags$b("Cobertura temporal - Áreas Protegidas Provinciales:"),"Chubut: a partir del año 2000 (excepto Punta Marques, a partir del 2012). San Juan: a partir del año 2000. Corrientes: a partir del año 2015."),br(),
@@ -219,7 +220,7 @@ shinyUI(
                             tags$li(style = "color: black", tags$b("SIAPN:"), "Sistema de Administración de Parques Nacionales"), 
                             tags$li(style = "color: black", tags$b("Chubut:"), "Departamento Observatorio Turístico del Chubut"), 
                             tags$li(style = "color: black", tags$b("San Juan:"), "Parque Provincial Ischigualasto"),
-                            tags$li(style = "color: black", tags$b("Corrientes:"), "Gran Parque Iberá")),
+                            tags$li(style = "color: black", tags$b("Corrientes:"), "Departamento Técnico del Comité Iberá")),
                       br()
                           
                       
