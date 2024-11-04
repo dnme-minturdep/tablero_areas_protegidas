@@ -285,10 +285,14 @@ shinyServer(function(input, output, session) {
   )
   
   output$notasDescarga <- downloadHandler(
-       "notas_areas_protegidas.xlsx",
-    content = function(file) {
-      writexl::write_xlsx(notas, file)
+    filename <- function() {
+      paste("notas", "xlsx", sep=".")
+    },
+    
+    content <- function(file) {
+      file.copy("/srv/DataDNMYE/areas_protegidas/areas_protegidas_nacionales/notas.xlsx", file)
     }
+    
   )
   
   waiter_hide()
