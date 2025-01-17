@@ -36,7 +36,7 @@ shinyUI(
                       ),br(),
                       
                       fluidRow(width = 12,
-                               tags$p(style="font-size: 14px; text-align: center;", tags$b('Fuentes de datos:'),(' La información fue elaborada por la Dirección Nacional de Mercados y Estadística (DNMyE), en base a datos aportados por la Dirección Nacional de Uso Público de la Administración de Parques Nacionales (APN). El mapa fue elaborado en base a la capa de información geoespacial del Instituto Geográfico Nacional.'))
+                               tags$p(style="font-size: 14px; text-align: center;", tags$b('Fuentes de datos:'),(' La información fue elaborada por la Dirección de Mercados y Estadísticas, Dirección Nacional de Calidad Turística, en base a datos aportados por la Dirección Nacional de Uso Público de la Administración de Parques Nacionales (APN). El mapa fue elaborado en base a la capa de información geoespacial del Instituto Geográfico Nacional.'))
                                
                       )
                       
@@ -153,7 +153,7 @@ shinyUI(
                           br(),
                           
                           fluidRow(width = 12,
-                                   tags$p(style="font-size: 14px; text-align: center;", tags$b('Fuentes de datos:'),(' La información fue elaborada por la Dirección Nacional de Mercados y Estadística (DNMyE), en base a datos aportados por la Dirección de Mercadeo de la Administración de Parques Nacionales (APN), el Departamento Observatorio Turístico del Chubut y el Parque Provincial Ischigualasto.')),
+                                   tags$p(style="font-size: 14px; text-align: center;", tags$b('Fuentes de datos:'),(' La información fue elaborada por la Dirección de Mercados y Estadísticas, Dirección Nacional de Calidad Turística, en base a datos aportados por la Dirección de Mercadeo de la Administración de Parques Nacionales (APN), el Departamento Observatorio Turístico del Chubut y el Parque Provincial Ischigualasto.')),
                                    
                                    br(), 
                                    h5("   Aquí puede acceder al último ", 
