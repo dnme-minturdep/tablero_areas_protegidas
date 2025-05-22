@@ -15,7 +15,7 @@ shinyUI(
              
              tabPanel("RESUMEN",
                       
-                      #tags$head(includeHTML("/srv/DataDNMYE/login_shiny/areas-protegidas.html")),
+                      tags$head(includeHTML("/srv/DataDNMYE/login_shiny/areas-protegidas.html")),
                       
                       useWaiter(),
                       waiter_show_on_load(html = loading_screen, color = "white"),
@@ -228,7 +228,7 @@ shinyUI(
                           
                       
                       )
-             )#,  footer = includeHTML("/srv/shiny-server/recursos/shiny_footer.html") #descomentariar al pushear
+             ),  footer = includeHTML("/srv/shiny-server/recursos/shiny_footer.html") #descomentariar al pushear
   )
 )
 
