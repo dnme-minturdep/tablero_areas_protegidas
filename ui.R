@@ -27,7 +27,7 @@ shinyUI(
                       
                       fluidRow(
                         column(width = 6, h5(tags$p("Evolución mensual de las Visitas en Parques Nacionales según condición de residencia."))),
-                        column(width = 6,  h5(tags$p("Áreas Protegidas Nacionales según registro de visitas. Año 2023")))    
+                        column(width = 6,  h5(tags$p("Áreas Protegidas Nacionales según registro de visitas. Año 2024")))    
                                ),
                       
                       fluidRow(
@@ -153,7 +153,7 @@ shinyUI(
                           br(),
                           
                           fluidRow(width = 12,
-                                   tags$p(style="font-size: 14px; text-align: center;", tags$b('Fuentes de datos:'),(' La información fue elaborada por la Dirección de Mercados y Estadísticas, Dirección Nacional de Calidad Turística, en base a datos aportados por la Dirección de Mercadeo de la Administración de Parques Nacionales (APN), el Departamento Observatorio Turístico del Chubut y el Parque Provincial Ischigualasto.')),
+                                   tags$p(style="font-size: 14px; text-align: center;", tags$b('Fuentes de datos:'),(' La información fue elaborada por la Dirección de Mercados y Estadísticas, Dirección Nacional de Calidad Turística, en base a datos aportados por la Dirección de Mercadeo de la Administración de Parques Nacionales (APN), el Departamento Observatorio Turístico del Chubut, el Parque Provincial Ischigualasto y la Dirección de Estudios y Mercados del Ministerio de Turismo de Misiones.')),
                                    
                                    br(), 
                                    h5("   Aquí puede acceder al último ", 
