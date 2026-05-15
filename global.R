@@ -30,7 +30,7 @@ areas_protegidas_total <- read_file_srv("areas_protegidas/base_shiny/areas_conso
                                       "Septiembre","Octubre","Noviembre", "Diciembre"), ordered = T))
 
 datos_mapa <- areas_protegidas_total %>% 
-  filter(anio == 2024) %>% 
+  filter(anio == max(anio)) %>% 
   group_by(area_protegida) %>% 
   summarise(total = sum(total, na.rm = T)) %>% 
   ungroup()

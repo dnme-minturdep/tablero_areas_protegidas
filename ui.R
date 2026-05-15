@@ -27,7 +27,7 @@ shinyUI(
                       
                       fluidRow(
                         column(width = 6, h5(tags$p("Evolución mensual de las Visitas en Parques Nacionales según condición de residencia."))),
-                        column(width = 6,  h5(tags$p("Áreas Protegidas Nacionales según registro de visitas. Año 2024")))    
+                        column(width = 6,  h5(tags$p("Áreas Protegidas Nacionales según registro de visitas. Acumulado a",format(max(areas_protegidas_total$indice_tiempo), "%B de %Y"))))    
                                ),
                       
                       fluidRow(
